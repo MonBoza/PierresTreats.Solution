@@ -38,7 +38,7 @@ namespace PierresTreats.Controllers
       return View();
     }
     [HttpPost]
-    public async Task<ActionResult> Create(Treat treat, int FlavorId)
+    public async Task<ActionResult> Create(Treat treat)
     {
       if (!ModelState.IsValid)
       {
@@ -47,7 +47,7 @@ namespace PierresTreats.Controllers
       }
       else
       {
-        string userId = userId.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
         treat.User = currentUser;
         _db.Treats.Add(treat);

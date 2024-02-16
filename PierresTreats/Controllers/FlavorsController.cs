@@ -40,16 +40,16 @@ namespace PierresTreats.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Flavor flavor, int TreatId)
+    public async Task<ActionResult> Create(Flavor flavor)
     {
       if (!ModelState.IsValid)
       {
         ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
-        return View(treat);
+        return View(flavor);
       }
       else
       {
-        string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
         flavor.User = currentUser;
         _db.Flavors.Add(flavor);

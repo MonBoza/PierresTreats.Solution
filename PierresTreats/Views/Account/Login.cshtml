@@ -2,23 +2,23 @@
 
 @model LoginViewModel
 
-<h2>Log in with your account </h2>
+<h2>Log in with your account info</h2>
+<hr />
 
-
-@if (!ViewData.ModelState.IsValid)
+@if(!ViewData.ModelState.IsValid)
 {
-     @Html.ValidationSummary("Please fix the following error(s) and resubmit:")
+  @Html.ValidationSummary("Please fix the following error(s) and resubmit:")
 }
 
 @using (Html.BeginForm())
 {
-  @Html.LableFor(m => m.Email)
+  @Html.LabelFor(m => m.Email)
   @Html.TextBoxFor(m => m.Email)
- 
-  @Html.LableFor(m => m.Password)
-  @Html.PasswordFor(m => m.Password)
 
-  <input type="submit" value="Log In">
+  @Html.LabelFor(m => m.Password)
+  @Html.TextBoxFor(m => m.Password)
+
+  <input type="submit" value="Log In" />
 }
 
 <button>@Html.ActionLink("Register for an account", "Register")</button>

@@ -43,3 +43,10 @@
   <button>@Html.ActionLink("Manage Treats", "Index", "Treats")</button>
 </div>
 }
+else
+{
+  <h4>Please log in or create an account.</h4>
+  <hr/>
+  <button>@Html.ActionLink("Register", "Register", "Account")</button>
+  <button>@Html.ActionLink("Log in", "Login", "Account")</button>
+}
