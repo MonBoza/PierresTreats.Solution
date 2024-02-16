@@ -1,20 +1,20 @@
-@model PierresTreats.Models.Treat
+@model PierresTreats.Models.Flavor
 
 @using PierresTreats.Models;
 
-<h2>Pierre's Treat Details</h2>
+<h2>Pierre's Flavor Details</h2>
 
-<h3>@Model.TreatName</h3>
+<h3>@Model.FlavorName</h3>
 
 @if (@Model.JoinEntities.Count == 0)
 {
   @if (Model.JoinEntities.Count == 0)
   {
-    <p>No flavors have been added to this treat yet.</p>
+    <p>No treats have been added to this flavor yet.</p>
   }
   else
   {
-    <h4>Flavors</h4>
+    <h4>Treats</h4>
   
       @foreach (FlavorTreat join in Model.JoinEntities)
       {
@@ -25,8 +25,8 @@
   }
 }
 
-<button>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</button>
-<button>@Html.ActionLink("Add a flavor", "AddFlavor", new { id = Model.TreatId })</button>
+<button>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</button>
+<button>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId })</button>
 <button>@Html.ActionLink("Add another Flavor", "Create")</button>
-<button>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</button>
+<button>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</button>
 <button>@Html.ActionLink("Back to List", "Index")</button>
