@@ -8,10 +8,18 @@
 }
 else
 {
-  @foreach (Flavor flavor in Model)
-  {
-    <h5>@Html.ActionLink($"{flavor.FlavorName}", "Details", new { id = flavor.FlavorId }) </h5>
-  }
+  <div class="row">
+    @foreach (Flavor flavor in Model)
+    {
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">@Html.ActionLink($"{flavor.FlavorName}", "Details", new { id = flavor.FlavorId })</h5>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
 }
 
 <button>@Html.ActionLink("Add a Flavor", "Create")</button>

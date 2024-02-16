@@ -2,17 +2,22 @@
 
 <h2>Add Treat</h2>
 
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">Add a treat to @Model.FlavorName</h3>
 
-<h3>Add a treat to @Model.FlavorName</h3>
+    @using (Html.BeginForm())
+    {
+      @Html.HiddenFor(model => model.FlavorId)
 
-@using (Html.BeginForm())
-{
-  @Html.HiddenFor(model => model.FlavorId)
+      <div class="form-group">
+        @Html.Label("Select a Treat: ")
+        @Html.DropDownList("TreatId", null, new { @class = "form-control" })
+      </div>
 
-  @Html.Label("Selete a Treat: ")
-  @Html.DropDownList("TreatId")
-  <br/>
-  <input type="submit" value="Add Treat" class="button"/>
-}
+      <input type="submit" value="Add Treat" class="btn-primary" />
+    }
 
-<button>@Html.ActionLink("Back to Treats", "Index")</button>
+    <button>@Html.ActionLink("Home", "Index", "Home")</button>
+  </div>
+</div>

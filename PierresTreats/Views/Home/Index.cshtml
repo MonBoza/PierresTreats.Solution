@@ -3,45 +3,55 @@
 <div class="card">
 
   @if (User.Identity.IsAuthenticated)
-{
-  <h2>Flavors for @User.Identity.Name</h2>
-  <hr />
-  @if (Model["flavors"].Length == 0)
   {
-    <p>No flavors found</p>
-  }
-  else
-  {
-    @foreach (Flavor flavor in Model["flavors"])
-    {
-      <h5>@Html.ActionLink(@flavor.FlavorName, "Details", "Flavors", new { id = @flavor.FlavorId })</h5>
-    }
-  }
-  <button>@Html.ActionLink("Manage Flavors", "Index", "Flavors")</button>
+    <div class="card-body">
+      <h4 class="card-title">Welcome @User.Identity.Name</h4>
+ 
+      <h2>Flavors</h2>
+      <hr />
+      @if (Model["flavors"].Length == 0)
+      {
+        <p>No flavors found</p>
+        <button>@Html.ActionLink("Create New Flavor", "Create", "Flavors")</button>
+      }
+      else
+      {
+        @foreach (Flavor flavor in Model["flavors"])
+        {
+          <h5>@Html.ActionLink(@flavor.FlavorName, "Details", "Flavors", new { id = @flavor.FlavorId }, new { @class = "card-link" })</h5>
+        }
+      }
+
+    
+    </div>
+
   }
 </div>
+<br />
+<br />
 
 @if (User.Identity.IsAuthenticated)
 {
-
-<hr />
-<div class="card">
-  <h2>Treats for @User.Identity.Name</h2>
   <hr />
-  @if (Model["treats"].Length == 0)
-  {
-    <p>No treats found</p>
-  }
-  else
-  {
-    @foreach (Treat treat in Model["treats"])
-    {
-      <h5>@Html.ActionLink(@treat.TreatName, "Details", "Treats", new { id = @treat.TreatId })</h5>
-
-    }
-  }
-  <button>@Html.ActionLink("Manage Treats", "Index", "Treats")</button>
-</div>
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Treats</h2>
+      <hr />
+      @if (Model["treats"].Length == 0)
+      {
+        <p>No treats found</p>
+         <button>@Html.ActionLink("Create New Treat", "Create", "Treats")</button>
+      }
+      else
+      {
+        @foreach (Treat treat in Model["treats"])
+        {
+          <h5>@Html.ActionLink(@treat.TreatName, "Details", "Treats", new { id = @treat.TreatId }, new { @class = "card-link" })</h5>
+        }
+      }
+   
+    </div>
+  </div>
 }
 else
 {

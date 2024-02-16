@@ -1,18 +1,26 @@
 @model PierresTreats.Models.Treat
 
-<h2>Add Flavor</h2>
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Add Flavor</h2>
 
+    <h3 class="card-subtitle">Add a flavor to @Model.TreatName</h3>
 
-<h3>Add a flavor to @Model.TreatName</h3>
+    @using (Html.BeginForm())
+    {
+      @Html.HiddenFor(model => model.TreatId)
 
-@using (Html.BeginForm())
-{
-  @Html.HiddenFor(model => model.TreatId)
+      <div class="form-group">
+        @Html.Label("Select a Flavor: ")
+        @Html.DropDownList("FlavorId", null, new { @class = "form-control" })
+      </div>
 
-  @Html.Label("Select a Flavor: ")
-  @Html.DropDownList("FlavorId")
-  <br/>
-  <input type="submit" value="Add Flavor" class="button"/>
-}
+      <div class="form-group">
+        <input type="submit" value="Add Flavor" class="btn btn-primary" />
+      </div>
+    }
 
-<button>@Html.ActionLink("Back to Treats", "Index")</button>
+ 
+      <button class='button'>@Html.ActionLink("Home", "Index", "Home")</button>
+    </div>
+</div>

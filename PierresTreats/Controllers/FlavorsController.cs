@@ -91,10 +91,15 @@ namespace PierresTreats.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    public ActionResult AddTreat(int id)
+   public async Task<ActionResult> AddTreat(int id)
     {
       Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
-      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      List<Treat> userTreats = _db.Treats
+                                .Where(entry => entry.User.Id == currentUser.Id)
+                                .ToList();
+      ViewBag.TreatId = new SelectList(_db.Treats.Where(entry => entry.User.Id == currentUser.Id), "TreatId", "TreatName");
       return View(thisFlavor);
     }
     [HttpPost]
@@ -112,12 +117,12 @@ namespace PierresTreats.Controllers
       return RedirectToAction("Details", new { id = flavor.FlavorId });
     }
     [HttpPost]
-    public ActionResult DeleteFlavor(int joinId)
+    public ActionResult DeleteJoin(int joinId)
     {
       FlavorTreat joinEntry = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
       _db.FlavorTreats.Remove(joinEntry);
       _db.SaveChanges();
-      return RedirectToAction("Details", new { id = joinEntry.TreatId });
+      return RedirectToAction("Index");
     }
 
   }
