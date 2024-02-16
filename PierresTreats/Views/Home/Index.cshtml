@@ -1,7 +1,10 @@
 @using PierresTreats.Models;
 
 <div class="card">
-  <h2>Flavors</h2>
+
+  @if (User.Identity.IsAuthenticated)
+{
+  <h2>Flavors for @User.Identity.Name</h2>
   <hr />
   @if (Model["flavors"].Length == 0)
   {
@@ -15,10 +18,15 @@
     }
   }
   <button>@Html.ActionLink("Manage Flavors", "Index", "Flavors")</button>
+  }
 </div>
+
+@if (User.Identity.IsAuthenticated)
+{
+
 <hr />
 <div class="card">
-  <h2>Treats</h2>
+  <h2>Treats for @User.Identity.Name</h2>
   <hr />
   @if (Model["treats"].Length == 0)
   {
@@ -34,3 +42,4 @@
   }
   <button>@Html.ActionLink("Manage Treats", "Index", "Treats")</button>
 </div>
+}

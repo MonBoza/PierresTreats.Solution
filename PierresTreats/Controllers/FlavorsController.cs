@@ -1,36 +1,63 @@
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using PierresTreats.Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
-using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+
 namespace PierresTreats.Controllers
 {
+  [Authorize]
   public class FlavorsController : Controller
   {
     private readonly PierresTreatsContext _db;
-    public FlavorsController(PierresTreatsContext db)
+    private readonly UserManager<ApplicationUser> _userManager;
+
+    public FlavorsController(UserManager<ApplicationUser> userManager, PierresTreatsContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
-    public ActionResult Index()
+    public async Task<ActionResult> Index()
+
     {
-      List<Flavor> model = _db.Flavors.ToList();
-      return View(model);
+      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      List<Flavor> userFlavors = _db.Flavors
+                                    .Where(entry => entry.User.Id == currentUser.Id)
+                                    .Include(flavor => flavor.JoinEntities)
+                                    .ToList();
+      return View(userFlavors);
     }
     public ActionResult Create()
     {
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
       return View();
     }
+
     [HttpPost]
-    public ActionResult Create(Flavor flavor)
+    public async Task<ActionResult> Create(Flavor flavor, int TreatId)
     {
-      _db.Flavors.Add(flavor);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if (!ModelState.IsValid)
+      {
+        ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
+        return View(treat);
+      }
+      else
+      {
+        string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        flavor.User = currentUser;
+        _db.Flavors.Add(flavor);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
+
     public ActionResult Details(int id)
     {
       Flavor thisFlavor = _db.Flavors
