@@ -1,6 +1,6 @@
-# Eau Claire's Hair Salon
+# Pierre's Treats
 
-## An MVC web application to manage a hair salon employees and their clients
+## An MVC web application to manage a bakers treats
 
 ### By Monica Barboza
 
@@ -14,17 +14,18 @@
 * MySWL Workbench
 * EF Core
 * ASP Core MVC MSBuild
+* Authentication
 
 ## Description
 
 How to Use:
 
-Stylist Management:
+Treat Management:
 
 * Add new stylists by providing their name and specialties.
 * Edit existing stylist details as needed.
 
-Client Management:
+Flavor Management:
 
 * Add clients with their names, notes, and link them to specific stylists.Update client information as preferences or details change.
 
@@ -48,22 +49,22 @@ This Project assumes you have MySql Server and Workbench  installed if you do no
 2. Clone the repository by running the following command to your desktop:
 
     ```bash
-    git clone https://github.com/MonBoza/HairSalon.Solution.git
+    git clone https://github.com/MonBoza/PierresTreats.Solution.git
      ```
 
 3. Open the project in your favorite code editor.
 
-4. Navigate to the production directory "HairSalon" and run the follow commands in your terminal to add the following dependencies
-
-    ```bash
+4. Navigate to the production directory "PierresTreats" and run the follow commands in your terminal to add the following dependencies
+    - add auth dependency
+    <!-- ```bash
     dotnet add package Microsoft.EntityFrameworkCore -v 6.0.0
     ```
 
     ```bash
     dotnet add package Pomelo.EntityFrameworkCore.MySql -v 6.0.0
-    ```
+    ``` -->
 
-5. Within the production directory `HairSalon`, create new file called `appsettings.json`
+5. Within the production directory `PierresTreats`, create new file called `appsettings.json`
 
 6. Make sure appsettings.json is added to the .gitignore file and it is added to the repository before pushing with your personal information.
 
@@ -72,36 +73,30 @@ This Project assumes you have MySql Server and Workbench  installed if you do no
     ```bash
     {
       "ConnectionStrings": {
-        "DefaultConnection": "Server=localhost;Port=3306;database=monica_barboza;uid=[YOUR-USER-HERE];pwd=[YOUR-PASSWORD-HERE];"
+        "DefaultConnection": "Server=localhost;Port=3306;database=pierres_treats;uid=[YOUR-USER-HERE];pwd=[YOUR-PASSWORD-HERE];"
       }
     }
     ```
 
-8. Run
+8. To Setup the database run the following command in your terminal
+
+  ```bash
+  dotnet ef database update
+  ```
+
+9. Run  command in your terminal
 
     ```bash
-    dotnet watch run
+    dotnet watch run 
     ```
-  
-in your terminal.
 
 ## To set up Database
 
-To run this application you need to import the `monica_barboza.sql` file located in the top of the repository to MySQL Workbench.
+* Run the following command in your terminal
 
-1. In the MySql Workbench select Navigator > Administration window, select `Data Import/Restore`.
-
-2. In `Import Options` select `Import` from `Self-Contained File`.
-
-3. Navigate to the monica_barboza.sql file.
-
-4. Under `Default Schema` to be `Imported to`, Select the `New` button
-    * Enter the name of your database "monica_barboza"
-    * Click OK
-
-5. Navigate to the tab called Import Progress and click Start Import at the bottom right corner of the window.
-
-6. After you are finished with the above steps, reopen the `Navigator > Schemas` tab. Right click and select `Refresh All`.
+  ```bash
+  dotnet ef database update
+  ```
 
 ## Known Bugs
 
@@ -120,8 +115,5 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 Email: (mailto:<MonBoza@gmail.com>)
 
-Copyright (c) February 02, 2024 Monica Barboza
+Copyright (c) February 16, 2024 Monica Barboza
 
-### SQL Schema Diagram
-
-<img src="image.png" alt="Schema Diagram" width="500px" />
