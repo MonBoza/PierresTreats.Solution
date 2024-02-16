@@ -1,0 +1,13 @@
+@model PierresTreats.Models.Flavor
+
+<h4>Add a new Flavor</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.FlavorName, "Enter Flavor Name: ")
+  @Html.TextBoxFor(model => model.FlavorName)
+
+  <input type="submit" value="Add" />
+}
+
+<button>@Html.ActionLink("Home", "Index", "Home")</button>
