@@ -18,8 +18,11 @@
   
       @foreach (FlavorTreat join in Model.JoinEntities)
       {
-        <h5>@Html.ActionLink($"{join.Treat.TreatName}", "Details", "Treats", new { id = join.Treat.TreatId })
-</h5>
+        <h5>@Html.ActionLink($"{join.Treat.TreatName}", "Details", "Treats", new { id = join.Treat.TreatId })</h5>
+        @using (Html.BeginForm("Delete", "FlavorTreats", new { id = join.FlavorTreatId }, FormMethod.Post))
+        {
+          <input type="submit" value="Remove" />
+        }
       }
 
   }

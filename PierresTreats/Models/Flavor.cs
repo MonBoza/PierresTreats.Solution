@@ -10,6 +10,7 @@ namespace PierresTreats.Models
 
     [Required(ErrorMessage = "Please enter a flavor name")]
     public string FlavorName { get; set; }
+    
     public List<FlavorTreat> JoinEntities { get; }
   }
 }
