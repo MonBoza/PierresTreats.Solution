@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using ProjectName.Models;
+using PierresTreats.Models;
 using System.Collections.Generic;
-// Change the namespace to match the name of your project
 
-namespace ProjectName.Controllers
+namespace PierresTreats.Controllers
 {
-  public class ItemsController : Controller
+  public class TreatsController : Controller
   {
 
  

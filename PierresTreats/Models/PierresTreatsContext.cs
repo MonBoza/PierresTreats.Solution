@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace ProjectName.Models
+namespace PierresTreats.Models
 {
-  public class ProjectNameContext : DbContext
+  public class PierresTreatsContext : DbContext
   {
-    public DbSet<Treats> Treats { get; set; }
+    public DbSet<Treat> Treats { get; set; }
+    public DbSet<Flavor> Flavors { get; set; }
+    public DbSet<FlavorTreat> FlavorTreats { get; set; }
  
-    public ProjectNameContext(DbContextOptions options) : base(options) { }
+    public PierresTreatsContext(DbContextOptions options) : base(options) { }
   }
 }

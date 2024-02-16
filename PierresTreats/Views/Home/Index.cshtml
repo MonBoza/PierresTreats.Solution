@@ -1,7 +1,36 @@
-@{
-  Layout="_Layout";
-}
-    <h1>Welcome ProjectName!</h1>
-    <a href='/items/new'>Add a new item</a>
-    <br />
-    <a href='/items'>See list of items</a>
+@using PierresTreats.Models;
+
+<div class="card">
+  <h2>Flavors</h2>
+  <hr />
+  @if (Model["flavors"].Length == 0)
+  {
+    <p>No flavors found</p>
+  }
+  else
+  {
+    @foreach (Flavor flavor in Model["flavors"])
+    {
+      <h5>@Html.ActionLink(@flavor.FlavorName, "Details", "Flavors", new { id = @flavor.FlavorId })</h5>
+    }
+  }
+  <button>@Html.ActionLink("Manage Flavors", "Index", "Flavors")</button>
+</div>
+<hr />
+<div class="card">
+  <h2>Treats</h2>
+  <hr />
+  @if (Model["treats"].Length == 0)
+  {
+    <p>No treats found</p>
+  }
+  else
+  {
+    @foreach (Treat treat in Model["treats"])
+    {
+      <h5>@Html.ActionLink(@treat.TreatName, "Details", "Treats", new { id = @treat.TreatId })</h5>
+
+    }
+  }
+  <button>@Html.ActionLink("Manage Treats", "Index", "Treats")</button>
+</div>
