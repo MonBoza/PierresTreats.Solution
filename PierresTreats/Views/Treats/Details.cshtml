@@ -6,25 +6,25 @@
 
 <h3>@Model.TreatName</h3>
 
+<h4>Flavors:</h4>
+
 @if (@Model.JoinEntities.Count == 0)
 {
   @if (Model.JoinEntities.Count == 0)
   {
     <p>No flavors have been added to this treat yet.</p>
   }
-  else
-  {
-    <h4>Flavors</h4>
-  
-      @foreach (FlavorTreat join in Model.JoinEntities)
-      {
-        <h5>@Html.ActionLink($"{join.Treat.TreatName}", "Details", "Treats", new { id = join.Treat.TreatId })</h5>
-        @using (Html.BeginForm("Delete", "FlavorTreats", new { id = join.FlavorTreatId }, FormMethod.Post))
-        {
-          <input type="submit" value="Remove" />
-        }
-      }
+}
+else
+{
 
+  @foreach (FlavorTreat join in Model.JoinEntities)
+  {
+    <h5>@Html.ActionLink($"{join.Flavor.FlavorName}", "Details", "Flavors", new { id = join.Flavor.FlavorId })</h5>
+    @using (Html.BeginForm("Delete", "FlavorTreats", new { id = join.FlavorTreatId }, FormMethod.Post))
+    {
+      <input type="submit" value="Remove" />
+    }
   }
 }
 
