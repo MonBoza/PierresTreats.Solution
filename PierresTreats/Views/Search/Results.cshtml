@@ -11,10 +11,18 @@
     var treats = (List<Treat>)Model;
     if (treats.Any())
     {
-        foreach (var treat in treats)
-        {
-            <h3>@Html.ActionLink(treat.TreatName, "Details", "Treats", new { id = treat.TreatId })</h3>
-        }
+        <div class="row">
+            @foreach (var treat in treats)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h3 class="card-title">@Html.ActionLink(treat.TreatName, "Details", "Treats", new { id = treat.TreatId })</h3>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     }
     else
     {
@@ -26,10 +34,18 @@ else if (Model is List<Flavor>)
     var flavors = (List<Flavor>)Model;
     if (flavors.Any())
     {
-        foreach (var flavor in flavors)
-        {
-            <h3>@Html.ActionLink(flavor.FlavorName, "Details", "Flavors", new { id = flavor.FlavorId })</h3>
-        }
+        <div class="row">
+            @foreach (var flavor in flavors)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h3 class="card-title">@Html.ActionLink(flavor.FlavorName, "Details", "Flavors", new { id = flavor.FlavorId })</h3>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     }
     else
     {

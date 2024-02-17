@@ -4,9 +4,10 @@
 
 <h2>Pierre's Flavor Details</h2>
 
-<h2>@Model.FlavorName</h3>
+
 
 <div class="card-deck">
+  <h2 class="card-title">@Model.FlavorName</h2>
   @if (@Model.JoinEntities.Count == 0)
   {
     <div class="card">
@@ -16,6 +17,7 @@
     </div>
   }
   else
+  
   {
     @foreach (FlavorTreat join in Model.JoinEntities)
     {
@@ -25,8 +27,10 @@
           @using (Html.BeginForm("DeleteJoin", "Flavors"))
           {
             @Html.Hidden("joinId", join.FlavorTreatId)
+          
             <input type="submit" value="Delete" class="btn btn-danger" />
           }
+          <br />
         </div>
       </div>
     }
