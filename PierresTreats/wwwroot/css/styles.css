@@ -18,16 +18,12 @@
     opacity: 0;
   }
 
-  50% {
+  100% {
     transform: translateX(0);
     opacity: 1;
   }
-
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
 }
+
 
 div#footer {
   position: fixed;
@@ -92,7 +88,7 @@ form {
 
 .card {
   background-color: #f0e6e9a5;
-  border-radius: 5px;
+  border-radius: 30px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin: 20px auto;
