@@ -18,12 +18,16 @@
     opacity: 0;
   }
 
-  100% {
+  50% {
     transform: translateX(0);
     opacity: 1;
   }
-}
 
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
 
 div#footer {
   position: fixed;
@@ -96,13 +100,28 @@ form {
   text-align: center;
   max-width: 600px;
   display: flex;
+  animation: bounceIn 1s;
 }
- 
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 .card-title {
   font-size: 24px;
   margin-bottom: 20px;
-  color:#244c5b
+  color: #244c5b
 }
 
 .card-body {
