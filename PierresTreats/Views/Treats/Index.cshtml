@@ -8,10 +8,16 @@
 }
 else
 {
-  @foreach (Treat treat in Model)
-  {
-    <h5>@Html.ActionLink($"{treat.TreatName}", "Details", new { id = treat.TreatId }) </h5>
-  }
+  <div class="card-deck">
+    @foreach (Treat treat in Model)
+    {
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">@Html.ActionLink($"{treat.TreatName}", "Details", new { id = treat.TreatId })</h5>
+        </div>
+      </div>
+    }
+  </div>
 }
 
 

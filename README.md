@@ -1,8 +1,8 @@
 # Pierre's Treats
 
-## An MVC web application to manage a bakers treats
+## By Monica Barboza
 
-### By Monica Barboza
+### An C# and ASP.NET Core Mvc application for Pierre's to market his sweet and savory treats
 
 ## Technologies Used
 
@@ -11,34 +11,33 @@
 * MS TEST
 * Bootstrap
 * MySQL
-* MySWL Workbench
+* MySQL Workbench
 * EF Core
-* ASP Core MVC MSBuild
-* Authentication
+* ASP.NET Core MVC
+* Entity Framework Core Identity
 
 ## Description
 
 How to Use:
 
+User must first register to add update and view Treats and Flavors in this application.
+
+To Register:
+
+Simply click the register button put your email address and create a password, log in and enjoy!
+
 Treat Management:
 
-* Add new stylists by providing their name and specialties.
-* Edit existing stylist details as needed.
+* Add new treat by providing the name and quantity.
+* Edit existing treats details as needed.
 
 Flavor Management:
 
-* Add clients with their names, notes, and link them to specific stylists.Update client information as preferences or details change.
+* Add flavor by their names and link them to specific treat. Update flavor information as preferences change.
 
 Search Function:
 
-* Use the search bar to quickly find clients based on keywords.
-* Enhance customer service by retrieving relevant information efficiently.
-
-Notes Section:
-
-* Leave and view notes for each client to personalize their salon experience.
-
-This salon management application is tailored to meet the unique needs of salon owners, providing a comprehensive solution for effective stylist and client management. Stay organized, enhance customer satisfaction, and elevate your salon operations with our user-friendly platform.
+* Use the search button to quickly find treats or flavors based on keywords.
 
 ## Setup/Installation Requirements
 
@@ -55,20 +54,26 @@ This Project assumes you have MySql Server and Workbench  installed if you do no
 3. Open the project in your favorite code editor.
 
 4. Navigate to the production directory "PierresTreats" and run the follow commands in your terminal to add the following dependencies
-    - add auth dependency
-    <!-- ```bash
+
+    ```bash
     dotnet add package Microsoft.EntityFrameworkCore -v 6.0.0
     ```
 
     ```bash
     dotnet add package Pomelo.EntityFrameworkCore.MySql -v 6.0.0
-    ``` -->
+    ```
 
-5. Within the production directory `PierresTreats`, create new file called `appsettings.json`
+5. To configure Identity to work with EF Core run the following command to install package
 
-6. Make sure appsettings.json is added to the .gitignore file and it is added to the repository before pushing with your personal information.
+    ```bash
+    dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore -v 6.0.0
+    ```
 
-7. Within `appsettings.json`, put in the following code replacing the `uid` and the `pwd` values with your own username and password for MySQL.
+6. Within the production directory `PierresTreats`, create new file called `appsettings.json`
+
+7. Make sure appsettings.json is added to the .gitignore file and it is added to the repository before pushing with your personal information.
+
+8. Within `appsettings.json`, put in the following code replacing the `uid` and the `pwd` values with your own username and password for MySQL.
 
     ```bash
     {
@@ -78,13 +83,13 @@ This Project assumes you have MySql Server and Workbench  installed if you do no
     }
     ```
 
-8. To Setup the database run the following command in your terminal
+9. To Setup the database run the following command in your terminal
 
-  ```bash
-  dotnet ef database update
-  ```
+    ```bash
+    dotnet ef database update
+    ```
 
-9. Run  command in your terminal
+10. Run  command in your terminal
 
     ```bash
     dotnet watch run 
@@ -94,9 +99,9 @@ This Project assumes you have MySql Server and Workbench  installed if you do no
 
 * Run the following command in your terminal
 
-  ```bash
-  dotnet ef database update
-  ```
+    ```bash
+    dotnet ef database update
+    ```
 
 ## Known Bugs
 
@@ -105,15 +110,8 @@ This Project assumes you have MySql Server and Workbench  installed if you do no
 
 ## License
 
-Copyright 2024 MONICA BARBOZA
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Email: (mailto:<MonBoza@gmail.com>)
 
 Copyright (c) February 16, 2024 Monica Barboza
-
