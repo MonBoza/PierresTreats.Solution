@@ -2,24 +2,32 @@
 
 @model LoginViewModel
 
-<h2>Log in with your account info</h2>
-<hr />
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Log in with your account info</h2>
+    <hr />
 
-@if(!ViewData.ModelState.IsValid)
-{
-  @Html.ValidationSummary("Please fix the following error(s) and resubmit:")
-}
+    @if(!ViewData.ModelState.IsValid)
+    {
+      @Html.ValidationSummary("Please fix the following error(s) and resubmit:")
+    }
 
-@using (Html.BeginForm())
-{
-  @Html.LabelFor(m => m.Email)
-  @Html.TextBoxFor(m => m.Email)
+    @using (Html.BeginForm())
+    {
+      <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+      </div>
 
-  @Html.LabelFor(m => m.Password)
-  @Html.TextBoxFor(m => m.Password)
+      <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+      </div>
 
-  <input type="submit" value="Log In" />
-}
+      <input type="submit" value="Log In" class="btn btn-primary" />
+    }
 
-<button>@Html.ActionLink("Register for an account", "Register")</button>
-<button>@Html.ActionLink("Back to accounts page", "Index")</button>
+    <button class="btn btn-link">@Html.ActionLink("Register for an account", "Register")</button>
+    <button class="btn btn-link">@Html.ActionLink("Back to accounts page", "Index")</button>
+  </div>
+</div>

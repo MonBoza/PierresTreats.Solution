@@ -20,11 +20,11 @@
 
 How to Use:
 
-User must first register to add update and view Treats and Flavors in this application.
+* User must first register to add update and view Treats and Flavors in this application.
 
 To Register:
 
-Simply click the register button put your email address and create a password, log in and enjoy!
+* Simply click the register button put your email address and create a password, log in and enjoy!
 
 Treat Management:
 
